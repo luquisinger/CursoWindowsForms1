@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsFormsBiblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,6 +60,11 @@ namespace CursoWindowsForms
         private void Btn_Reset_Click_1(object sender, EventArgs e)
         {
             Msk_CPF.Text = string.Empty;
+        }
+
+        private void Frm_ValidaCPF2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

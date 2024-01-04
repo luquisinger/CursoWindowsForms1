@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CursoWindowsForms
 {
-    public partial class frm_HelloWorld : Form
+    public partial class Frm_HelloWorld_UC : UserControl
     {
-        public frm_HelloWorld()
+        public Frm_HelloWorld_UC()
         {
             InitializeComponent();
         }
@@ -22,22 +22,17 @@ namespace CursoWindowsForms
 
         }
 
-        private void Btn_sair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void Btn_ModificaLabel_Click(object sender, EventArgs e)
         {
             lbl_Titulo.Text = Txt_ConteudoLabel.Text;
         }
 
-        private void frm_HelloWorld_Load(object sender, EventArgs e)
+        private void Txt_ConteudoLabel_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Txt_ConteudoLabel_TextChanged(object sender, EventArgs e)
+        private void lbl_Titulo_Click_1(object sender, EventArgs e)
         {
 
         }

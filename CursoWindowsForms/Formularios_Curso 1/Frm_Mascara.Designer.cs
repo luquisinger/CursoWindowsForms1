@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(310, 275);
+            this.ClientSize = new System.Drawing.Size(309, 275);
             this.Controls.Add(this.Btn_VerConteudo);
             this.Controls.Add(this.Btn_Telefone);
             this.Controls.Add(this.Btn_Senha);
@@ -152,7 +152,9 @@
             this.Controls.Add(this.Lbl_MascaraAtiva);
             this.Controls.Add(this.Lbl_Conteudo);
             this.Controls.Add(this.Msk_TextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.Name = "Frm_Mascara";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exemplos de Máscaras";

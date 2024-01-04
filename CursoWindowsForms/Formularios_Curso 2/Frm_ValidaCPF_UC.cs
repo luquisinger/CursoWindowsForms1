@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoWindowsFormsBiblioteca;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,41 +11,51 @@ using System.Windows.Forms;
 
 namespace CursoWindowsForms
 {
-    public partial class Frm_ValidaCPF : Form
+    public partial class Frm_ValidaCPF_UC : UserControl
     {
-        public Frm_ValidaCPF()
+        public Frm_ValidaCPF_UC()
         {
             InitializeComponent();
         }
 
+        private void Frm_ValidaCPF_UC_Load(object sender, EventArgs e)
+        {
+
+        }
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
         }
         private void Btn_Reset_Click(object sender, EventArgs e)
         {
-            Msk_CPF.Text = string.Empty;
-            Lbl_Resultado.Text = string.Empty;
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Btn_Valida_Click(object sender, EventArgs e)
+        {
             bool validaCPF = false;
             validaCPF = Cls_Uteis.Valida(Msk_CPF.Text);
-            if (validaCPF) 
+            if (validaCPF)
             {
                 Lbl_Resultado.Text = "CPF válido";
                 Lbl_Resultado.ForeColor = Color.Green;
-            } else
+            }
+            else
             {
                 Lbl_Resultado.Text = "CPF inválido";
                 Lbl_Resultado.ForeColor = Color.Red;
             }
         }
-        
 
-        private void Frm_ValidaCPF_Load(object sender, EventArgs e)
+        private void Btn_Reset_Click_1(object sender, EventArgs e)
         {
-
+            Msk_CPF.Text = string.Empty;
+            Lbl_Resultado.Text = string.Empty;
         }
     }
 }
+

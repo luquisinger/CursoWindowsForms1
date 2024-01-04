@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace CursoWindowsForms
 {
-    public partial class Frm_DemonstracaoKey : Form
+    public partial class Frm_DemonstracaoKey_UC : UserControl
     {
-        public Frm_DemonstracaoKey()
+        public Frm_DemonstracaoKey_UC()
         {
             InitializeComponent();
-        }
-
-        private void Txt_Msg_KeyDown(object sender, KeyEventArgs e)
-        {
-            Txt_Input.AppendText("\r\n" + "Pressionei uma tecla"+ e.KeyCode +" \r\n" );
-        }
-
-        private void Txt_Msg_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Txt_Input_KeyDown(object sender, KeyEventArgs e)
@@ -34,11 +24,6 @@ namespace CursoWindowsForms
             Txt_Msg.AppendText("\t" + "Nome da tecla: " + e.KeyData + "\r\n");
             Lbl_Lower.Text = e.KeyCode.ToString().ToLower();
             Lbl_Upper.Text = e.KeyCode.ToString().ToUpper();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Btn_Reset_Click(object sender, EventArgs e)

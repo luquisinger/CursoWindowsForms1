@@ -46,6 +46,7 @@
             // 
             // Lbl_Resultado
             // 
+            this.Lbl_Resultado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Lbl_Resultado.AutoSize = true;
             this.Lbl_Resultado.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Resultado.Location = new System.Drawing.Point(12, 90);
@@ -55,6 +56,7 @@
             // 
             // Btn_Reset
             // 
+            this.Btn_Reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Reset.Location = new System.Drawing.Point(245, 42);
             this.Btn_Reset.Name = "Btn_Reset";
             this.Btn_Reset.Size = new System.Drawing.Size(111, 23);
@@ -65,6 +67,7 @@
             // 
             // Btn_Valida
             // 
+            this.Btn_Valida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_Valida.Location = new System.Drawing.Point(245, 71);
             this.Btn_Valida.Name = "Btn_Valida";
             this.Btn_Valida.Size = new System.Drawing.Size(111, 23);
@@ -82,7 +85,9 @@
             this.Controls.Add(this.Btn_Reset);
             this.Controls.Add(this.Lbl_Resultado);
             this.Controls.Add(this.Msk_CPF);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Frm_ValidaCPF";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Validacao CPF";

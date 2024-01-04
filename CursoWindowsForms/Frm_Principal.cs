@@ -52,5 +52,10 @@ namespace CursoWindowsForms
             Frm_Mascara f3 = new Frm_Mascara();
             f3.ShowDialog();
         }
+
+        private void Frm_Principal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
