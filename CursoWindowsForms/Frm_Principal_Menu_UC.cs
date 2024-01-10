@@ -140,7 +140,7 @@ namespace CursoWindowsForms
         {
             if (!(Tbc_Aplicacoes.SelectedTab == null))
             {
-                Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.SelectedTab);
+                ApagaAba(Tbc_Aplicacoes.SelectedTab);
             }
         }
 
@@ -211,7 +211,7 @@ namespace CursoWindowsForms
 
                 for (int i = Tbc_Aplicacoes.TabPages.Count - 1; i <= 0; i--)
                 {
-                    Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.TabPages[i]);
+                    ApagaAba(Tbc_Aplicacoes.TabPages[i]);
 
                 }
 
@@ -339,7 +339,11 @@ namespace CursoWindowsForms
         }
         void ApagaAba(TabPage Tb)
         {
-            Tbc_Aplicacoes.TabPages.Remove(Tbc_Aplicacoes.TabPages[i]);
+            if(Tb.Name == "Cadastro de Clientes")
+            {
+                ControleCadastroClientes = 0;
+            }
+            Tbc_Aplicacoes.TabPages.Remove(Tb);
         }
     }   
 }
