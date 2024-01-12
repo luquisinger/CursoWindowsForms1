@@ -126,7 +126,7 @@
             this.Lbl_NomePai.Size = new System.Drawing.Size(35, 13);
             this.Lbl_NomePai.TabIndex = 4;
             this.Lbl_NomePai.Text = "label1";
-            this.Lbl_NomePai.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // Txt_NomePai
             // 
@@ -161,7 +161,7 @@
             this.Lbl_CEP.Size = new System.Drawing.Size(35, 13);
             this.Lbl_CEP.TabIndex = 10;
             this.Lbl_CEP.Text = "label1";
-            this.Lbl_CEP.Click += new System.EventHandler(this.Lbl_CEP_Click);
+            
             // 
             // Txt_CEP
             // 
@@ -196,7 +196,7 @@
             this.Lbl_Estado.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Estado.TabIndex = 14;
             this.Lbl_Estado.Text = "label1";
-            this.Lbl_Estado.Click += new System.EventHandler(this.label1_Click_2);
+            
             // 
             // Lbl_Bairro
             // 
@@ -224,7 +224,7 @@
             this.Lbl_RendaFamiliar.Size = new System.Drawing.Size(35, 13);
             this.Lbl_RendaFamiliar.TabIndex = 17;
             this.Lbl_RendaFamiliar.Text = "label1";
-            this.Lbl_RendaFamiliar.Click += new System.EventHandler(this.label4_Click);
+            
             // 
             // Lbl_Profissao
             // 
@@ -273,7 +273,6 @@
             this.Txt_Profissao.Name = "Txt_Profissao";
             this.Txt_Profissao.Size = new System.Drawing.Size(1454, 20);
             this.Txt_Profissao.TabIndex = 14;
-            this.Txt_Profissao.TextChanged += new System.EventHandler(this.Txt_Profissao_TextChanged);
             // 
             // Txt_Telefone
             // 
@@ -423,7 +422,6 @@
             this.Lbl_Cidade.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Cidade.TabIndex = 18;
             this.Lbl_Cidade.Text = "label1";
-            this.Lbl_Cidade.Click += new System.EventHandler(this.Lbl_Cidade_Click);
             // 
             // Txt_Cidade
             // 
@@ -535,7 +533,7 @@
             this.Controls.Add(this.Grp_Codigo);
             this.Name = "Frm_CadastroCliente_UC";
             this.Size = new System.Drawing.Size(806, 625);
-            this.Load += new System.EventHandler(this.Frm_CadastroCliente_UC_Load);
+
             this.Grp_Codigo.ResumeLayout(false);
             this.Grp_Codigo.PerformLayout();
             this.Grp_DadosPessoais.ResumeLayout(false);

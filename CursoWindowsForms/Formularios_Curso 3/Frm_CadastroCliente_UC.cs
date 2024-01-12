@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CursoWindowsFormsBiblioteca;
 using CursoWindowsFormsBiblioteca.Classes;
+using CursoWindowsFormsBiblioteca.Databases;
 using Microsoft.VisualBasic;
 
 namespace CursoWindowsForms
@@ -76,48 +77,29 @@ namespace CursoWindowsForms
             Tls_Principal.Items[3].ToolTipText = "Apaga cliente já cadastrado";
             Tls_Principal.Items[4].ToolTipText = "Limpa dados da tela da entrada de dados";
 
-
+            LimparFormulario();
 
 
         }
-        private void label1_Click(object sender, EventArgs e)
+        
+        public void LimparFormulario()
         {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Txt_Profissao_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Frm_CadastroCliente_UC_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_CEP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Lbl_Cidade_Click(object sender, EventArgs e)
-        {
-
+            Txt_Bairro.Text = "";
+            Txt_CEP.Text = "";
+            Txt_Complemento.Text = "";
+            Txt_CPF.Text = "";
+            Cmb_Estados.SelectedIndex = -1;
+            Txt_Logradouro.Text = "";
+            Txt_NomeCliente.Text = "";
+            Txt_NomeMae.Text = "";
+            Txt_NomePai.Text = "";
+            Txt_Profissao.Text = "";
+            Txt_RendaFamiliar.Text = "";
+            Txt_Telefone.Text = "";
+            Txt_Cidade.Text = "";
+            Chk_TemPai.Checked = false;
+            Rdb_Masculino.Checked = true;
+            Txt_Codigo.Text = "";
         }
 
         private void Chk_TemPai_CheckedChanged(object sender, EventArgs e)
@@ -142,8 +124,20 @@ namespace CursoWindowsForms
                 C = LeituraFormulario();
                 C.ValidaClasse();
                 C.ValidaComplemento();
-                MessageBox.Show("Classe foi inicializada sem erros", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string clienteJson = Cliente.SerializedClassUnit(C);
+                Fichario F = new Fichario("C:\\Users\\mathe\\OneDrive\\Documentos\\PROJETOS\\ALURA\\C#\\CursoWindowsForms\\CursoWindowsForms");
+                if (F.status)
+                {
+                    MessageBox.Show("Cliente" + clienteJson +"foi incluido com sucesso do Bd", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+       
+                }
             }
+
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -167,7 +161,7 @@ namespace CursoWindowsForms
 
         private void LimparBarratoolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("abrir arquivo");
+            LimparFormulario();
         }
         Cliente.Unit LeituraFormulario()
         { 

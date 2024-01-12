@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace CursoWindowsFormsBiblioteca.Classes
 {
@@ -99,6 +100,10 @@ namespace CursoWindowsFormsBiblioteca.Classes
         {
             public List<List> ListUnit { get; set; }
                 
+        }
+        public static string SerializedClassUnit(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
         }
     }
 }
