@@ -128,13 +128,20 @@ namespace CursoWindowsForms
                 Fichario F = new Fichario("C:\\Users\\mathe\\OneDrive\\Documentos\\PROJETOS\\ALURA\\C#\\CursoWindowsForms\\CursoWindowsForms");
                 if (F.status)
                 {
-                    MessageBox.Show("Cliente" + clienteJson +"foi incluido com sucesso do Bd", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    F.Incluir(C.Id, clienteJson);
+                    if (F.status)
+                    {
+                        MessageBox.Show("Cliente" + clienteJson +"foi incluido com sucesso do Bd", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-       
+                    MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);       
                 }
             }
 
@@ -146,17 +153,109 @@ namespace CursoWindowsForms
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("buscar arquivo");
+            if(Txt_Codigo.Text == "")
+            {
+                
+                MessageBox.Show("O código do cliente esá vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                Fichario F = new Fichario("C:\\Users\\mathe\\OneDrive\\Documentos\\PROJETOS\\ALURA\\C#\\CursoWindowsForms\\CursoWindowsForms");
+                if (F.status)
+                {
+                    string clienteJson = F.Buscar(Txt_Codigo.Text);
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = Cliente.DesSerializedClassUnit(clienteJson);
+                    EscreveFormulario(C);
+                }
+                else
+                {
+                    MessageBox.Show("Err: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         private void salvarToolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("salvar arquivo");
+            if (Txt_Codigo.Text == "")
+            {
+
+                MessageBox.Show("O código do cliente esá vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else
+            {
+                try
+                {
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = LeituraFormulario();
+                    C.ValidaClasse();
+                    C.ValidaComplemento();
+                    string clienteJson = Cliente.SerializedClassUnit(C);
+                    Fichario F = new Fichario("C:\\Users\\mathe\\OneDrive\\Documentos\\PROJETOS\\ALURA\\C#\\CursoWindowsForms\\CursoWindowsForms");
+                    if (F.status)
+                    {
+                        F.Alterar(C.Id, clienteJson);
+                        if (F.status)
+                        {
+                            MessageBox.Show("Cliente" + clienteJson + "foi incluido com sucesso do Bd", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show(F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                catch (Exception Ex)
+                {
+                    MessageBox.Show(Ex.Message, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+           
         }
 
         private void ApagatoolStripButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("excluir arquivo");
+            if (Txt_Codigo.Text == "")
+            {
+
+                MessageBox.Show("O código do cliente esá vazio", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Fichario F = new Fichario("C:\\Users\\mathe\\OneDrive\\Documentos\\PROJETOS\\ALURA\\C#\\CursoWindowsForms\\CursoWindowsForms");
+                if (F.status)
+                {
+                    string clienteJson = F.Buscar(Txt_Codigo.Text);
+                    Cliente.Unit C = new Cliente.Unit();
+                    C = Cliente.DesSerializedClassUnit(clienteJson);
+                    EscreveFormulario(C);
+
+                    Frm_Questao Db = new Frm_Questao("icons8_ponto_de_interrogação_481", "Você quer excluir o cliente?");
+                    Db.ShowDialog();
+                    if(Db.DialogResult == DialogResult.Yes)
+                    {
+                        F.Apagar(Txt_Codigo.Text);
+                        if (F.status)
+                        {
+                            MessageBox.Show("OK: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparFormulario();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Err ", "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Err: " + F.mensagem, "ByteBank", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void LimparBarratoolStripButton_Click(object sender, EventArgs e)
@@ -216,7 +315,64 @@ namespace CursoWindowsForms
 
             return C;
         }
+        void EscreveFormulario(Cliente.Unit C)
+        {
 
+            Txt_Codigo.Text = C.Id;
+            Txt_NomeCliente.Text = C.Nome;
+            Txt_NomeMae.Text = C.NomeMae;
+            Txt_NomePai.Text = C.NomePai;
+            if (C.NaoTemPai)
+            {
+                Chk_TemPai.Checked = true;
+                Txt_NomePai.Text = "";
+            }
+            else
+            {
+                Chk_TemPai.Checked = false;
+                Txt_NomePai.Text = C.NomePai;
+            }
+            if (C.Genero == 0)
+            {
+                Rdb_Masculino.Checked =true;
+                
+            }
+            else if (C.Genero == 1)
+            {
+                Rdb_Feminino.Checked = true;
+                
+            }
+            else if (C.Genero == 2)
+            {
+                Rdb_Indefinido.Checked = true; 
+                
+            }
+
+            Txt_CPF.Text = C.Cpf;
+            Txt_CEP.Text = C.Cep;
+            Txt_Bairro.Text = C.Bairro;
+            Txt_Complemento.Text = C.Complemento;
+            Txt_Cidade.Text = C.Cidade;
+            Txt_Logradouro.Text = C.Logradouro;
+            Txt_Telefone.Text = C.Telefone;
+            Txt_Profissao.Text = C.Profissao;
+            if (C.Estado == "")
+            {
+                Cmb_Estados.SelectedIndex = -1;
+                
+            }
+            else
+            {
+                for(int i = 0; i <= Cmb_Estados.Items.Count -1; i++)
+                {
+                    if(C.Estado == Cmb_Estados.Items[i].ToString())
+                    {
+                        Cmb_Estados.SelectedIndex = i;
+                    }
+                }
+            }
+            Txt_RendaFamiliar.Text = C.RendaFamiliar.ToString();
+        }
         private void Txt_CEP_Leave(object sender, EventArgs e)
         {
             string vCep = Txt_CEP.Text;

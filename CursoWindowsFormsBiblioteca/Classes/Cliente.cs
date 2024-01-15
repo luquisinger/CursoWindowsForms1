@@ -35,20 +35,20 @@ namespace CursoWindowsFormsBiblioteca.Classes
             [RegularExpression("[0-9]+", ErrorMessage = "O cep aceita apenas valores numéricos. ")]
             public string Cep { get; set; }
             [Required(ErrorMessage = "O logradouro do cliente é obrigatório")]
-            [StringLength(50, MinimumLength = 50, ErrorMessage = "o logradouro deve ter 50 caracteres")]
+            [StringLength(50, ErrorMessage = "o logradouro pode ter até 50 caracteres")]
 
             public string Logradouro { get; set; }
             [Required(ErrorMessage = "O complemento do cliente é obrigatório")]
-            [StringLength(100, MinimumLength = 100, ErrorMessage = "a cidade deve ter 100 caracteres")]
+            [StringLength(100, ErrorMessage = "o logradouro pode ter até 100 caracteres")]
 
             public string Complemento { get; set; }
             [Required(ErrorMessage = "O Bairro do cliente é obrigatório")]
             public string Bairro { get; set; }
             [Required(ErrorMessage = "A cidade do cliente é obrigatório")]
-            [StringLength(50, MinimumLength = 50, ErrorMessage = "a cidade deve ter 50 caracteres")]
+            [StringLength(50, ErrorMessage = "a cidade pode ter até 50 caracteres")]
             public string Cidade { get; set; }
             [Required(ErrorMessage = "O estado do cliente é obrigatório")]
-            [StringLength(50, MinimumLength = 50, ErrorMessage = "O estado deve ter 50 dígitos")]
+            [StringLength(50, ErrorMessage = "O estado pode ter até 50 caracteres")]
             public string Estado { get; set; }
             [Required(ErrorMessage = "O telefone do cliente é obrigatório")]
             [RegularExpression("[0-9]+", ErrorMessage = "O telefone aceita apenas valores numéricos. ")]
@@ -104,6 +104,10 @@ namespace CursoWindowsFormsBiblioteca.Classes
         public static string SerializedClassUnit(Unit unit)
         {
             return JsonConvert.SerializeObject(unit);
+        }
+        public static Unit DesSerializedClassUnit(string vJson)
+        {
+            return JsonConvert.DeserializeObject<Unit>(vJson);
         }
     }
 }

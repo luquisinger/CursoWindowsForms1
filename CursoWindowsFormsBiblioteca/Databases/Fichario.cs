@@ -32,5 +32,103 @@ namespace CursoWindowsFormsBiblioteca.Databases
                 status=false;
             }
         }
+        public void Incluir(string Id, string jsonUnit)
+        {
+            status = true;
+            try
+            {
+
+            if(File.Exists(diretorio + "\\" + Id + ".json"))
+            {
+                status=false;
+                mensagem = "inclusao nao permitida pq o identificador já existe: " +Id;
+            }
+            else
+            {
+                File.WriteAllText(diretorio + "\\" + Id + ".json", jsonUnit);
+                status = true;
+                mensagem = "Inclusao efetuada com sucesso. ID: " + Id;
+            }
+            } catch(Exception ex)
+            {
+                mensagem = "Conexão está: " + status + " porque:  " + ex.Message;
+                status = false;
+            }
+        }
+        public string Buscar(string Id)
+        {
+            status = true;
+            try
+            {
+                if (!(File.Exists(diretorio + "\\" + Id + ".json")))
+                {
+                    status = false;
+                    mensagem = "Id não existente: " + Id;
+                }
+                else
+                {
+                    string conteudo = File.ReadAllText(diretorio + "\\" + Id + ".json");
+                    status = true;
+                    mensagem = "Inclusao efetuada com sucesso. ID: " + Id;
+                    return conteudo;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                mensagem = "Erro ao buscar o id do cliente: " + ex.Message;
+            }
+            return "";
+        }
+        public void Apagar(string Id)
+        {
+            status = true;
+            try
+            {
+                if (!(File.Exists(diretorio + "\\" + Id + ".json")))
+                {
+                    status = false;
+                    mensagem = "Id não existente: " + Id;
+                }
+                else
+                {
+                    File.Delete(diretorio + "\\" + Id + ".json");
+                    status = true;
+                    mensagem = "Exclusão efetuada com sucesso. ID: " + Id;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+                mensagem = "Erro ao buscar o id do cliente: " + ex.Message;
+            }
+           
+        }
+        public void Alterar (string Id, string jsonUnit)
+        {
+            status = true;
+            try
+            {
+
+                if (File.Exists(diretorio + "\\" + Id + ".json"))
+                {
+                    status = false;
+                    mensagem = "Alteração nao permitida pq o identificador já existe: " + Id;
+                }
+                else
+                {
+                    File.Delete(diretorio + "\\" + Id + ".json");
+                    File.WriteAllText(diretorio + "\\" + Id + ".json", jsonUnit);
+                    status = true;
+                    mensagem = "Alteração efetuada com sucesso. Identificador: " + Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                mensagem = "Conexão está: " + status + " porque:  " + ex.Message;
+                status = false;
+            }
+        }
     }
 }
