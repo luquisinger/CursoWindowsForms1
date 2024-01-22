@@ -75,6 +75,7 @@
             this.ApagatoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.LimparBarratoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.Tls_Principal2 = new System.Windows.Forms.ToolStrip();
+            this.Btn_Busca = new System.Windows.Forms.Button();
             this.Grp_Codigo.SuspendLayout();
             this.Grp_DadosPessoais.SuspendLayout();
             this.Grb_Genero.SuspendLayout();
@@ -126,7 +127,6 @@
             this.Lbl_NomePai.Size = new System.Drawing.Size(35, 13);
             this.Lbl_NomePai.TabIndex = 4;
             this.Lbl_NomePai.Text = "label1";
-            
             // 
             // Txt_NomePai
             // 
@@ -161,7 +161,6 @@
             this.Lbl_CEP.Size = new System.Drawing.Size(35, 13);
             this.Lbl_CEP.TabIndex = 10;
             this.Lbl_CEP.Text = "label1";
-            
             // 
             // Txt_CEP
             // 
@@ -177,7 +176,6 @@
             this.Txt_Logradouro.Name = "Txt_Logradouro";
             this.Txt_Logradouro.Size = new System.Drawing.Size(552, 20);
             this.Txt_Logradouro.TabIndex = 8;
-         
             // 
             // Lbl_Logradouro
             // 
@@ -196,7 +194,6 @@
             this.Lbl_Estado.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Estado.TabIndex = 14;
             this.Lbl_Estado.Text = "label1";
-            
             // 
             // Lbl_Bairro
             // 
@@ -224,7 +221,6 @@
             this.Lbl_RendaFamiliar.Size = new System.Drawing.Size(35, 13);
             this.Lbl_RendaFamiliar.TabIndex = 17;
             this.Lbl_RendaFamiliar.Text = "label1";
-            
             // 
             // Lbl_Profissao
             // 
@@ -290,10 +286,11 @@
             // 
             // Grp_Codigo
             // 
+            this.Grp_Codigo.Controls.Add(this.Btn_Busca);
             this.Grp_Codigo.Controls.Add(this.Txt_Codigo);
             this.Grp_Codigo.Location = new System.Drawing.Point(11, 49);
             this.Grp_Codigo.Name = "Grp_Codigo";
-            this.Grp_Codigo.Size = new System.Drawing.Size(200, 41);
+            this.Grp_Codigo.Size = new System.Drawing.Size(290, 46);
             this.Grp_Codigo.TabIndex = 29;
             this.Grp_Codigo.TabStop = false;
             this.Grp_Codigo.Text = "groupBox1";
@@ -521,6 +518,16 @@
             this.Tls_Principal2.TabIndex = 34;
             this.Tls_Principal2.Text = "toolStrip3";
             // 
+            // Btn_Busca
+            // 
+            this.Btn_Busca.Location = new System.Drawing.Point(210, 19);
+            this.Btn_Busca.Name = "Btn_Busca";
+            this.Btn_Busca.Size = new System.Drawing.Size(71, 20);
+            this.Btn_Busca.TabIndex = 2;
+            this.Btn_Busca.Text = "button1";
+            this.Btn_Busca.UseVisualStyleBackColor = true;
+            this.Btn_Busca.Click += new System.EventHandler(this.Btn_Busca_Click);
+            // 
             // Frm_CadastroCliente_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,7 +540,6 @@
             this.Controls.Add(this.Grp_Codigo);
             this.Name = "Frm_CadastroCliente_UC";
             this.Size = new System.Drawing.Size(806, 625);
-
             this.Grp_Codigo.ResumeLayout(false);
             this.Grp_Codigo.PerformLayout();
             this.Grp_DadosPessoais.ResumeLayout(false);
@@ -601,5 +607,6 @@
         private System.Windows.Forms.ToolStrip Tls_Principal2;
         private System.Windows.Forms.ToolStripButton ApagatoolStripButton;
         private System.Windows.Forms.ToolStripButton LimparBarratoolStripButton;
+        private System.Windows.Forms.Button Btn_Busca;
     }
 }
