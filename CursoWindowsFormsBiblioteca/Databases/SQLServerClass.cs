@@ -16,7 +16,7 @@ namespace CursoWindowsFormsBiblioteca.Databases
         {
             try
             {
-                stringConn = "DData Source=LUQUISINGER;Initial Catalog=ByteBank;Persist Security Info=True;User ID=sa;Password=12";
+                stringConn = "Data Source=LUQUISINGER;Initial Catalog=ByteBank;Persist Security Info=True;User ID=sa;Password=123";
                 connDB = new SqlConnection(stringConn);
                 connDB.Open();
             }
