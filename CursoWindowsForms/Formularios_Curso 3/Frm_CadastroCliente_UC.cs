@@ -250,20 +250,23 @@ namespace CursoWindowsForms
             C.Nome = Txt_NomeCliente.Text;
             C.NomeMae = Txt_NomeMae.Text;
             C.NomePai = Txt_NomePai.Text;
-            if(Chk_TemPai.Checked)
+            if (Chk_TemPai.Checked)
             {
-                C.NaoTemPai = true;
-            } else
-            {
-                C.NaoTemPai = false;
+                C.NaoTemPai = 1;
             }
-            if(Rdb_Masculino.Checked)
+            else
+            {
+                C.NaoTemPai = 0;
+            }
+            if (Rdb_Masculino.Checked)
             {
                 C.Genero = 0;
-            } else if (Rdb_Feminino.Checked)
+            }
+            if (Rdb_Feminino.Checked)
             {
                 C.Genero = 1;
-            } else if (Rdb_Indefinido.Checked)
+            }
+            if (Rdb_Indefinido.Checked)
             {
                 C.Genero = 2;
             }
@@ -303,7 +306,7 @@ namespace CursoWindowsForms
             Txt_NomeCliente.Text = C.Nome;
             Txt_NomeMae.Text = C.NomeMae;
             Txt_NomePai.Text = C.NomePai;
-            if (C.NaoTemPai)
+            if (C.NaoTemPai == 1)
             {
                 Chk_TemPai.Checked = true;
                 Txt_NomePai.Text = "";

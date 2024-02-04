@@ -26,7 +26,8 @@ namespace CursoWindowsFormsBiblioteca.Classes
             [Required(ErrorMessage = "O nome da mãe deve ser preenchido")]
             [StringLength(50, ErrorMessage = "O nome da mae pode ter no máximo 50 caracteres")]
             public string NomeMae { get; set; }
-            public bool NaoTemPai { get; set; }
+            public int NaoTemPai { get; set; }
+            [Required(ErrorMessage = "CPF obrigatório.")]
             [RegularExpression("[0-9]+", ErrorMessage = "O cpf aceita apenas valores numéricos. ")]
             [StringLength(11, MinimumLength = 11, ErrorMessage = "O cpf deve ter 11 dígitos")]
             public string Cpf { get; set; }
@@ -56,10 +57,11 @@ namespace CursoWindowsFormsBiblioteca.Classes
             [RegularExpression("[0-9]+", ErrorMessage = "O telefone aceita apenas valores numéricos. ")]
             public string Telefone { get; set; }
             public string Profissao { get; set; }
-            [Required(ErrorMessage = "a renda é obrigatória")]
-            [RegularExpression("[0-9]+", ErrorMessage = "a renda aceita apenas valores numéricos. ")]
-            [Range(0, double.MaxValue, ErrorMessage = "A renda deve ser um valor positivo")]
+
+            [Required(ErrorMessage = "Renda familiar é obrigatória.")]
+            [Range(0, double.MaxValue, ErrorMessage = "Renda familiar deve ser um valor positivo.")]
             public Double RendaFamiliar { get; set; }
+
             public void ValidaClasse()
             {
 
@@ -84,7 +86,7 @@ namespace CursoWindowsFormsBiblioteca.Classes
                 {
                     throw new Exception("Nome do pai e da mae nao podem ser iguais!");
                 }
-                if (this.NaoTemPai == false)
+                if (this.NaoTemPai == 0)
                 {
                     if (this.NomePai == " ")
                     {
@@ -181,7 +183,6 @@ namespace CursoWindowsFormsBiblioteca.Classes
             }
 
             #endregion
-
 
             #region "CRUD do Fichario SQL Server"
 
@@ -377,20 +378,21 @@ namespace CursoWindowsFormsBiblioteca.Classes
             #endregion
 
             #endregion
+
         }
         public class List
-            {
-                public List<List> ListUnit { get; set; }
+        {
+            public List<List> ListUnit { get; set; }
 
-            }
-            public static string SerializedClassUnit(Unit unit)
-            {
-                return JsonConvert.SerializeObject(unit);
-            }
-            public static Unit DesSerializedClassUnit(string vJson)
-            {
-                return JsonConvert.DeserializeObject<Unit>(vJson);
-            }
+        }
+        public static string SerializedClassUnit(Unit unit)
+        {
+            return JsonConvert.SerializeObject(unit);
+        }
+        public static Unit DesSerializedClassUnit(string vJson)
+        {
+            return JsonConvert.DeserializeObject<Unit>(vJson);
+        }
 
     }
 }
