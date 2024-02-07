@@ -106,6 +106,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ByteBankDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Formularios_Curso 2\Frm_ArquivoImagem_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,6 +176,12 @@
     </Compile>
     <Compile Include="FrmBusca.Designer.cs">
       <DependentUpon>FrmBusca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Agencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Agencia.Designer.cs">
+      <DependentUpon>Frm_Agencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Principal.cs">
       <SubType>Form</SubType>
@@ -300,6 +311,9 @@
     <EmbeddedResource Include="FrmBusca.resx">
       <DependentUpon>FrmBusca.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Agencia.resx">
+      <DependentUpon>Frm_Agencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Principal.resx">
       <DependentUpon>Frm_Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +357,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ByteBankDataSet.xsc">
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ByteBankDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ByteBankDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ByteBankDataSet.xss">
+      <DependentUpon>ByteBankDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -359,6 +384,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Frm_Principal.ico" />
+    <Content Include="Imagens\agencia.ico" />
     <Content Include="Imagens\Cadastros.png" />
     <Content Include="Imagens\DeleteAll.png" />
     <Content Include="Imagens\DeleteLeft.png" />
@@ -385,6 +411,7 @@
     <Content Include="Imagens\LimparBarra.png" />
     <Content Include="Imagens\money.png" />
     <Content Include="Imagens\user.png" />
+    <None Include="Resources\icons8-pantheon-64.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CursoWindowsFormsBiblioteca\CursoWindowsFormsBiblioteca.csproj">
